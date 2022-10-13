@@ -1,6 +1,8 @@
+import { MetaData } from "./meta-data"
+
 export type Category = {
   id?: string
   name: string
   description: string
-  created_at: Date
+  meta_data: MetaData
 }
