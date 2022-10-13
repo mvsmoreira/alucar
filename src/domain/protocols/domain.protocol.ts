@@ -1,3 +1,4 @@
+import { ErrorEntity } from "domain/entities"
 import { Response } from "domain/entities/response"
 
 export declare namespace Domain {
@@ -17,8 +18,6 @@ export declare namespace Domain {
   }
 
   export interface UseCase {
-    getMetaData: () => MetaData
-    isAuthorized: (request: Request) => void
-    execute: (request: Request) => Promise<Response>
+    execute(request: Request): Promise<Response | ErrorEntity>
   }
 }

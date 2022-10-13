@@ -5,9 +5,9 @@ import { User } from "domain/entities/user"
 
 export declare namespace Dependencies {
   export interface Repository<T> {
-    create(data: Partial<T>): Promise<void>
+    create(entity: T): Promise<void>
     list(): Promise<T[]>
-    findUnique(reference: string): Promise<Partial<T | undefined>>
+    findUnique(reference: any): Promise<Partial<T | undefined>>
   }
 
   export interface Container {
