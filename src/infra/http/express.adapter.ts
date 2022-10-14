@@ -1,6 +1,7 @@
 import { Response } from "../../domain/entities/response";
 import { App, Dependencies, Domain } from "../../domain/protocols";
 import { CreateUser } from "../../domain/use-cases/create-user";
+import { ListUsers } from "../../domain/use-cases/list-user";
 import express, {
   Express,
   json,
@@ -16,7 +17,7 @@ export class ExpressAdapter implements App.Http {
     this.app.use(json())
 
     this.app.get('/', (req, res) => res.send('Hello World'))
-    // this.app.get('/users/:driver_license', (req, res) => res.send('Hello World'))
+    this.app.get('/users', this.useCaseToRoute(ListUsers))
 
     this.app.post('/users', this.useCaseToRoute(CreateUser))
   }
