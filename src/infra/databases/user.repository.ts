@@ -25,8 +25,8 @@ export class UserRepository implements Dependencies.Repository<User> {
     return this.repository
   }
 
-  find(driver_license: string): User | undefined {
-    return this.repository.find(user => driver_license === user.driver_license)
+  find(username: string): User | undefined {
+    return this.repository.find(user => username === user.username)
   }
 
 }

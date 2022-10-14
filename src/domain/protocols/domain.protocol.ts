@@ -18,6 +18,6 @@ export declare namespace Domain {
   }
 
   export interface UseCase {
-    execute(request: Request): Promise<Response | ErrorEntity>
+    execute(request: Request): Promise<Response>
   }
 }

@@ -5,12 +5,12 @@ import { Dependencies, Domain } from "../../domain/protocols";
 export class CreateUser implements Domain.UseCase {
   constructor(private readonly container: Dependencies.Container) { }
 
-  async execute(req: Domain.Request): Promise<Response | ErrorEntity> {
+  async execute(req: Domain.Request): Promise<Response> {
     const { name, username, email, password, driver_license } = req.body
-    const userExists = await this.container.repository.users.find(driver_license)
+    const userExists = await this.container.repository.users.find(username)
 
     if (userExists) {
-      return ErrorEntity.unprocessable('User already exists')
+      return Response.fromErrorEntity(ErrorEntity.unprocessable('User already exists'))
     }
 
     const user = User.create(name, username, email, password, driver_license)
