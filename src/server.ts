@@ -1,6 +1,7 @@
-import express from 'express'
+import { ExpressAdapter } from "infra/http/express.adapter"
 
-const app = express()
-app.use(express.json())
-
-app.listen(3333)
+const main = () => {
+  const app = new ExpressAdapter()
+  app.listen(3333)
+}
+main()
