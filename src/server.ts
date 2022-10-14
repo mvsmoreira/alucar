@@ -1,7 +1,9 @@
-import { ExpressAdapter } from "infra/http/express.adapter"
+import { Container } from "./infra/container"
+import { ExpressAdapter } from "./infra/http/express.adapter"
 
-const main = () => {
-  const app = new ExpressAdapter()
+const main = async () => {
+  const container = await Container.init()
+  const app = new ExpressAdapter(container.dependencies)
   app.listen(3333)
 }
 main()

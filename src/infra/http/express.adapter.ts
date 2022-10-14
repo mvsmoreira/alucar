@@ -1,14 +1,22 @@
-import { Response } from "domain/entities";
-import { App, Domain } from "domain/protocols";
-import { CreateUser } from "domain/use-cases/create-user";
-import express, { Express, json, NextFunction, Request, Response as ExpressResponse } from 'express'
-import { Container } from "infra/container";
+import { Response } from "../../domain/entities/response";
+import { App, Dependencies, Domain } from "../../domain/protocols";
+import { CreateUser } from "../../domain/use-cases/create-user";
+import express, {
+  Express,
+  json,
+  Request,
+  Response as ExpressResponse
+} from 'express'
 
 export class ExpressAdapter implements App.Http {
   app: Express
-  constructor() {
+
+  constructor(private readonly container: Dependencies.Container) {
     this.app = express()
     this.app.use(json())
+
+    this.app.get('/', (req, res) => res.send('Hello World'))
+    // this.app.get('/users/:driver_license', (req, res) => res.send('Hello World'))
 
     this.app.post('/users', this.useCaseToRoute(CreateUser))
   }
@@ -18,13 +26,11 @@ export class ExpressAdapter implements App.Http {
 
   useCaseToRoute(UseCase: any) {
     return async (
-      { body, params, query }: Request,
-      res: ExpressResponse,
-      next: NextFunction): Promise<void> => {
-      const container = await Container.init()
+      { body, params, query, headers }: Request,
+      res: ExpressResponse): Promise<void> => {
 
-      const request: Domain.Request = { body, params, query }
-      const useCase = new UseCase(container.dependencies)
+      const request: Domain.Request = { body, params, query, headers }
+      const useCase = new UseCase(this.container)
       const response: Response = await useCase.execute(request)
       res.status(response.statusCode).json(response.data)
     }

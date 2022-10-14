@@ -14,7 +14,7 @@ export class User {
     private admin: boolean,
     private rentals: Rental[],
     public readonly meta_data: MetaData
-  ) {}
+  ) { }
 
   static create(
     name: string,
@@ -22,24 +22,24 @@ export class User {
     email: string,
     password: string,
     driver_license: string): User {
-      const id = randomUUID()
-      const meta_data: MetaData = {
-        id: randomUUID(),
-        created_at: new Date(),
-      }
-      const admin = false
-      const rentals: Rental[] = []
-
-      return new User(
-        id,
-        name,
-        username,
-        email,
-        password,
-        driver_license,
-        admin,
-        rentals,
-        meta_data,
-        )
+    const id = randomUUID()
+    const meta_data: MetaData = {
+      id: randomUUID(),
+      created_at: new Date(),
     }
+    const admin = false
+    const rentals: Rental[] = []
+
+    return new User(
+      id,
+      name,
+      username,
+      email,
+      password,
+      driver_license,
+      admin,
+      rentals,
+      meta_data,
+    )
+  }
 }

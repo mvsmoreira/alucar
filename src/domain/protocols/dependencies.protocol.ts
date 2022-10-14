@@ -5,15 +5,15 @@ import { User } from "domain/entities/user"
 
 export declare namespace Dependencies {
   export interface Repository<T> {
-    create(entity: T): Promise<void>
-    list(): Promise<T[]>
-    findUnique(reference: any): Promise<Partial<T | undefined>>
+    create(entity: T): void
+    list(): T[]
+    find(reference: any): T | undefined
   }
 
   export interface Container {
-    repository?: {
+    repository: {
       users: Repository<User>
-      categories: Repository<Category>
+      categories?: Repository<Category>
     }
   }
 }
