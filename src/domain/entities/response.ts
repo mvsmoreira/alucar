@@ -1,7 +1,7 @@
-import { ErrorEntity } from "./error"
+import { ErrorEntity } from './error'
 
 export class Response {
-  private constructor(readonly statusCode: number, readonly data: any) { }
+  private constructor(readonly statusCode: number, readonly data: any) {}
 
   static ok(data: any): Response {
     return new Response(200, data)

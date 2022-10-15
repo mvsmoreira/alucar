@@ -54,6 +54,9 @@ export class ErrorEntity extends Error {
 
   static fromStatusCode(status = 500, message?: string): ErrorEntity {
     const code = ErrorCode[status] ?? 'SERVER_ERROR'
-    return new ErrorEntity(message ?? ErrorMessages[code as keyof typeof ErrorMessages], ErrorCode[code as keyof typeof ErrorCode])
+    return new ErrorEntity(
+      message ?? ErrorMessages[code as keyof typeof ErrorMessages],
+      ErrorCode[code as keyof typeof ErrorCode]
+    )
   }
 }

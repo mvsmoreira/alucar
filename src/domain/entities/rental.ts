@@ -1,6 +1,6 @@
-import { Car } from "./car"
-import { MetaData } from "./meta-data"
-import { User } from "./user"
+import { Car } from './car'
+import { MetaData } from './meta-data'
+import { User } from './user'
 
 export type Rental = {
   id: string

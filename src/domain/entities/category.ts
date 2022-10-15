@@ -1,4 +1,4 @@
-import { MetaData } from "./meta-data"
+import { MetaData } from './meta-data'
 
 export type Category = {
   id?: string

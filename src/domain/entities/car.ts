@@ -1,5 +1,5 @@
-import { Category } from "./category"
-import { MetaData } from "./meta-data"
+import { Category } from './category'
+import { MetaData } from './meta-data'
 
 export type Car = {
   id: string
