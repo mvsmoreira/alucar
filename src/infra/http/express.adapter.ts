@@ -24,7 +24,7 @@ export class ExpressAdapter implements App.Http {
   }
 
   listen(port: number): void {
-    this.app.listen(port)
+    this.app.listen(port, () => console.log(`App is running at http://localhost:${port}`))
   }
 
   useCaseToRoute(UseCase: any) {
