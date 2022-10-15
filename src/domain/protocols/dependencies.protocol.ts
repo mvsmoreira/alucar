@@ -1,13 +1,11 @@
-// DTO = Data Transfer Object
-
-import { Category } from "domain/entities/category"
-import { User } from "domain/entities/user"
+import { Category } from '../entities/category'
+import { User } from '../entities/user'
 
 export declare namespace Dependencies {
   export interface Repository<T> {
-    create(entity: T): void
-    list(): T[]
-    find(reference: any): T | undefined
+    create: (entity: T) => Promise<void>
+    list: () => Promise<T[]>
+    find: (reference: any) => Promise<T | undefined>
   }
 
   export interface Container {

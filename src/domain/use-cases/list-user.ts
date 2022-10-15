@@ -1,10 +1,10 @@
-import { UseCase } from '../../infra/http/express.adapter'
-import { Response } from '../entities/response'
+import { Response } from '../entities'
 import { Dependencies } from '../protocols'
+import { UseCase } from '../protocols/use-case'
 
 export class ListUsers extends UseCase {
   constructor(private readonly container: Dependencies.Container) {
-    super(container)
+    super()
   }
 
   async execute(): Promise<Response> {

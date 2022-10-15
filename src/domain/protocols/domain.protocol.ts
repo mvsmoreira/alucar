@@ -1,5 +1,4 @@
-import { ErrorEntity } from "domain/entities"
-import { Response } from "domain/entities/response"
+import { Response } from '../entities'
 
 export declare namespace Domain {
   export type Request = {
@@ -18,6 +17,6 @@ export declare namespace Domain {
   }
 
   export interface UseCase {
-    execute(request: Request): Promise<Response>
+    execute: (request: Request) => Promise<Response>
   }
 }

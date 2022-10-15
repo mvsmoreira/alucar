@@ -1,9 +1,8 @@
-import { ErrorEntity, Response } from "../../domain/entities";
-import { User } from "../../domain/entities/user";
-import { Dependencies, Domain } from "../../domain/protocols";
+import { Response } from '../entities'
+import { Dependencies, Domain } from '../protocols'
 
 export class FindUser implements Domain.UseCase {
-  constructor(private readonly container: Dependencies.Container) { }
+  constructor(private readonly container: Dependencies.Container) {}
 
   async execute(req: Domain.Request): Promise<Response> {
     const { username } = req.params
